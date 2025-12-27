@@ -36,4 +36,18 @@ public class UserService {
 
         return userResponse;
     }
+
+    public @Nullable UserResponse getUserProfile(String userId) {
+        User user  = repository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+        UserResponse userResponse = new UserResponse();
+        userResponse.setId(user.getId());
+        userResponse.setEmail(user.getEmail());
+        userResponse.setFirstName(user.getFirstName());
+        userResponse.setLastName(user.getLastName());
+        userResponse.setPassword(user.getPassword());
+        userResponse.setCreatedAt(user.getCreatedAt());
+        userResponse.setUpdatedAt(user.getUpdatedAt());
+
+        return userResponse;
+    }
 }
