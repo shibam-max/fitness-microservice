@@ -50,4 +50,9 @@ public class UserService {
 
         return userResponse;
     }
+
+    public @Nullable boolean existsByUserId(String userId) {
+
+        return repository.existsById(userId);
+    }
 }
