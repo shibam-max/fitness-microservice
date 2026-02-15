@@ -6,11 +6,12 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface RecommendationRepository extends MongoRepository<Recommendation,String> {
 
-    @Nullable List<Recommendation> findByUserId(String userId);
+    List<Recommendation> findByUserId(String userId);
 
-    @Nullable List<Recommendation> findByAcitivityId(String activityId);
+    Optional<Recommendation> findByActivityId(String activityId);
 }
