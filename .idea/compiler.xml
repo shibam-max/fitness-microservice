@@ -9,11 +9,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="eureka" />
       </profile>
-      <profile name="Annotation profile for aiservice" enabled="true">
+      <profile name="Annotation profile for userservice" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <processorPath>
+        <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-starter-data-mongodb/3.2.0/spring-boot-starter-data-mongodb-3.2.0.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-starter/3.2.0/spring-boot-starter-3.2.0.jar" />

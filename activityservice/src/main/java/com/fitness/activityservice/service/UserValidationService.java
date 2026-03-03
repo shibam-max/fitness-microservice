@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.client.WebClientResponseException;
+import org.springframework.web.reactive.function.client.WebClientException;
 
 @Slf4j
 @Service
@@ -17,14 +17,14 @@ public class UserValidationService {
     public boolean validateUser(String userId) {
         log.info("Calling user service for {}", userId);
         try {
-            return userServiceWebClient.get()
+            Boolean result = userServiceWebClient.get()
                     .uri("/api/users/{userId}/validate", userId)
                     .retrieve()
                     .bodyToMono(Boolean.class)
                     .block();
-
-    } catch(WebClientResponseException e){
-        e.printStackTrace();
+            return result != null && result;
+    } catch(WebClientException e){
+        log.error("Error calling user service: {}", e.getMessage(), e);
         }
         return false;
     }
